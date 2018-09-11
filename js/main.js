@@ -1,17 +1,38 @@
 $(document).ready(function(){
 
 	$('#send').click(function(){
-		console.log('button -- testing...')
-		//testing---if-form-fields
+
 		var fullname	=	$('#fullname').val();
 		var email		=	$('#email').val();
 		var phone		=	$('#phone').val();
 		var message		=	$('#message').val();
-		console.log($('#fullname').val());
-		console.log($('#email').val());
-		console.log($('#phone').val());
-		console.log($('#message').val());
-		//Its Working
+		
+		var count = 0;
+
+		if($('#fullname').val() === ''){
+			$('#fullname').addClass('field_error');
+			count++;
+		}	
+
+		if($('#phone').val() === ''){
+			$('#phone').addClass('field_error');
+			count++;
+		}	
+
+		if($('#email').val() === ''){
+			$('#email').addClass('field_error');
+			count++;
+		}	
+
+		if($('#message').val() === ''){
+			$('#message').addClass('field_error');
+			count++;
+		}	
+
+
+		if(count > 0){
+			return false;
+		}	
 
 		$.ajax({
 			url:'./mail.php',
